@@ -1,0 +1,43 @@
+<html>
+    <body>
+        日期:{{ date }}
+        标题:{{ title }}
+        <form action="{% url 'students' %}" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <label>{{ field.label_tag }}</label>
+                {{ field }}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        <input type="submit" value="Submit" />
+        </form>
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>姓名</td>
+                    <td>年龄</td>
+                    <td>手机</td>
+                    <td>操作</td>
+            </thead>
+            <tbody>
+                {% for studens in data %}
+                <tr>
+                    <td>{{ studens.name }}</td>
+                    <td>{{ studens.age }}</td>
+                    <td>{{ studens.mobile }}</td>
+                    <td><a href="{% url 'delete_student' _id=studens.id %}">删除</a></td>
+                    <td><a href="{% url 'student_info' _id=studens.id %}">更新</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+
+
+
+
+</html>

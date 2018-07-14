@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="name">姓名</label>
+            <input type="text" name="name" value="{{ student.name }}">
+            <label for="age">年龄</label>
+            <input type="text" name="age" value="{{ student.age }}">
+            <label for="mobile">手机</label>
+            <input type="text" name="mobile" value="{{ student.mobile }}">
+            <label for="gender">性别</label>
+            <select name=gender>
+                <option value="1">男</option>
+                <option value="2">女</option>
+            </select>
+            <label for="height">身高</label>
+            <input type="text" name="height" value="{% if student.height %}{{ student.height }} {% endif %}">
+            <label for="weight">体重</label>
+            <input type="text" name="weight" value="{% if student.weight %}{{ student.weight }} {% endif %}">
+            <input type="submit" value="submit" />
+        </form>
+    </body>
+</html>

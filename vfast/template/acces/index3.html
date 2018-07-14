@@ -1,0 +1,27 @@
+<html>
+    <body>
+        日期:{{ date }}
+        标题:{{ title }}
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>姓名</td>
+                    <td>年龄</td>
+                    <td>手机</td>
+            </thead>
+            <tbody>
+                {% for student in data %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.mobile }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+
+
+
+
+</html>
